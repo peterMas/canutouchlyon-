@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canu Touch Lyon - Comptes Rendus</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        
+        header {
+            background-color: #003d7a;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .accent-bar {
+            height: 4px;
+            background: linear-gradient(to right, #003d7a, #d63031, #003d7a);
+            margin-top: 20px;
+        }
+        
+        main {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .cr-list {
+            list-style: none;
+        }
+        
+        .cr-item {
+            background-color: white;
+            border-left: 5px solid #d63031;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .cr-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0, 61, 122, 0.15);
+        }
+        
+        .cr-link {
+            text-decoration: none;
+            color: #003d7a;
+            font-weight: 600;
+            font-size: 1.1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .cr-link:hover {
+            color: #d63031;
+        }
+        
+        .cr-date {
+            color: #999;
+            font-size: 0.95em;
+            font-weight: 400;
+        }
+        
+        .arrow {
+            color: #d63031;
+            font-size: 1.3em;
+            margin-left: 15px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #999;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Canu Touch Lyon</h1>
+        <p>Comptes Rendus des Assemblées Générales</p>
+        <div class="accent-bar"></div>
+    </header>
+    
+    <main>
+        <ul class="cr-list">
+            <li class="cr-item">
+                <a href="CR_CA_CanuTouchLyon_08072026.html" class="cr-link">
+                    <span>
+                        <div>Compte Rendu CA</div>
+                        <div class="cr-date">08-07-2026</div>
+                    </span>
+                    <span class="arrow">→</span>
+                </a>
+            </li>
+            
+            <!-- À AJOUTER : Nouvelle ligne pour chaque CR -->
+            <!-- 
+            <li class="cr-item">
+                <a href="CR_CA_CanuTouchLyon_DDMMYYYY.html" class="cr-link">
+                    <span>
+                        <div>Compte Rendu CA</div>
+                        <div class="cr-date">DD-MM-YYYY</div>
+                    </span>
+                    <span class="arrow">→</span>
+                </a>
+            </li>
+            -->
+            
+        </ul>
+    </main>
+    
+    <footer>
+        <p>© 2026 Canu Touch Lyon - Tous droits réservés</p>
+    </footer>
+</body>
+</html>
