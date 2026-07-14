@@ -13,14 +13,12 @@
     --surface2: #1e2335;
     --border: #2a2f45;
     --accent: #4f8ef7;
-    --accent2: #7c3aed;
     --green: #22c55e;
     --orange: #f59e0b;
     --red: #ef4444;
     --blue: #3b82f6;
     --text: #e8eaf0;
     --muted: #8b92a8;
-    --tag-bg: #1e2335;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -34,7 +32,6 @@
     padding: 0 0 60px;
   }
 
-  /* HEADER */
   header {
     background: linear-gradient(135deg, #1a1f35 0%, #0f1117 60%);
     border-bottom: 1px solid var(--border);
@@ -45,340 +42,190 @@
   header::before {
     content: '🏉';
     position: absolute;
-    right: 20px;
-    top: 50%;
+    right: 20px; top: 50%;
     transform: translateY(-50%);
-    font-size: 64px;
-    opacity: 0.12;
+    font-size: 64px; opacity: 0.12;
   }
   .club-name {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 8px;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 8px;
   }
   header h1 {
     font-family: 'Space Grotesk', sans-serif;
     font-size: clamp(20px, 5vw, 28px);
-    font-weight: 700;
-    color: #fff;
-    line-height: 1.2;
+    font-weight: 700; color: #fff; line-height: 1.2;
   }
-  .meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 16px;
-  }
+  .meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
   .meta-chip {
-    background: var(--surface2);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 4px 12px;
-    font-size: 13px;
-    color: var(--muted);
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 6px; padding: 4px 12px;
+    font-size: 13px; color: var(--muted);
   }
   .meta-chip strong { color: var(--text); font-weight: 600; }
-  .presences {
-    margin-top: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-  .presence-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    font-size: 13px;
-  }
-  .presence-label {
-    font-weight: 600;
-    min-width: 80px;
-    padding-top: 2px;
-  }
+  .presences { margin-top: 16px; display: flex; flex-direction: column; gap: 6px; }
+  .presence-row { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; }
+  .presence-label { font-weight: 600; min-width: 80px; padding-top: 2px; }
   .presence-label.present { color: var(--green); }
   .presence-label.absent { color: var(--red); }
 
-  /* NAVIGATION */
   nav {
-    position: sticky;
-    top: 0;
-    z-index: 10;
+    position: sticky; top: 0; z-index: 10;
     background: rgba(15,17,23,0.96);
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border);
     padding: 0 16px;
-    overflow-x: auto;
-    white-space: nowrap;
-    scrollbar-width: none;
+    overflow-x: auto; white-space: nowrap; scrollbar-width: none;
   }
   nav::-webkit-scrollbar { display: none; }
-  nav ul {
-    display: inline-flex;
-    list-style: none;
-    gap: 2px;
-    padding: 8px 0;
-  }
+  nav ul { display: inline-flex; list-style: none; gap: 2px; padding: 8px 0; }
   nav a {
-    display: inline-block;
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--muted);
-    text-decoration: none;
-    transition: all 0.15s;
+    display: inline-block; padding: 6px 12px; border-radius: 6px;
+    font-size: 12px; font-weight: 500; color: var(--muted);
+    text-decoration: none; transition: all 0.15s;
   }
-  nav a:hover {
-    background: var(--surface2);
-    color: var(--text);
-  }
+  nav a:hover { background: var(--surface2); color: var(--text); }
 
-  /* LAYOUT */
-  main {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 24px 16px 0;
-  }
+  main { max-width: 720px; margin: 0 auto; padding: 24px 16px 0; }
 
-  /* SECTION */
   .section {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    margin-bottom: 16px;
-    overflow: hidden;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; margin-bottom: 16px; overflow: hidden;
   }
   .section-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 16px 20px;
-    border-bottom: 1px solid var(--border);
-    cursor: pointer;
-    user-select: none;
+    display: flex; align-items: center; gap: 10px;
+    padding: 16px 20px; border-bottom: 1px solid var(--border);
+    cursor: pointer; user-select: none;
   }
   .section-number {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--accent);
+    font-size: 11px; font-weight: 700; color: var(--accent);
     background: rgba(79,142,247,0.1);
     border: 1px solid rgba(79,142,247,0.2);
-    border-radius: 4px;
-    padding: 2px 7px;
-    min-width: 28px;
-    text-align: center;
+    border-radius: 4px; padding: 2px 7px; min-width: 28px; text-align: center;
   }
   .section-title {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    color: #fff;
-    flex: 1;
+    font-size: 15px; font-weight: 700; color: #fff; flex: 1;
   }
-  .chevron {
-    color: var(--muted);
-    font-size: 12px;
-    transition: transform 0.2s;
-  }
+  .chevron { color: var(--muted); font-size: 12px; transition: transform 0.2s; }
   .section.collapsed .chevron { transform: rotate(-90deg); }
-  .section-body {
-    padding: 16px 20px;
-  }
+  .section-body { padding: 16px 20px; }
   .section.collapsed .section-body { display: none; }
 
-  /* BLOCS */
-  .bloc {
-    margin-bottom: 16px;
-  }
+  .bloc { margin-bottom: 16px; }
   .bloc:last-child { margin-bottom: 0; }
   .bloc-title {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 8px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 8px;
   }
 
-  /* LISTES */
-  ul.points {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-  ul.points li {
-    padding-left: 16px;
-    position: relative;
-    font-size: 14px;
-    color: #c8cce0;
-  }
-  ul.points li::before {
-    content: '–';
-    position: absolute;
-    left: 0;
-    color: var(--muted);
-  }
+  ul.points { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+  ul.points li { padding-left: 16px; position: relative; font-size: 14px; color: #c8cce0; }
+  ul.points li::before { content: '–'; position: absolute; left: 0; color: var(--muted); }
 
-  /* ACTIONS */
   .actions {
     background: rgba(79,142,247,0.05);
     border: 1px solid rgba(79,142,247,0.15);
-    border-radius: 8px;
-    padding: 12px 14px;
-    margin-top: 12px;
+    border-radius: 8px; padding: 12px 14px; margin-top: 12px;
   }
   .actions-title {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 8px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 8px;
   }
   .action-item {
-    display: flex;
-    gap: 8px;
-    align-items: flex-start;
-    padding: 4px 0;
-    font-size: 13px;
+    display: flex; gap: 8px; align-items: flex-start;
+    padding: 4px 0; font-size: 13px;
     border-bottom: 1px solid rgba(79,142,247,0.08);
   }
   .action-item:last-child { border-bottom: none; }
   .action-arrow { color: var(--accent); flex-shrink: 0; margin-top: 1px; }
-  .action-who {
-    font-weight: 600;
-    color: #fff;
-    flex-shrink: 0;
-  }
+  .action-who { font-weight: 600; color: #fff; flex-shrink: 0; }
   .action-text { color: #b0b8d0; }
 
-  /* DIVIDER */
-  .divider {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 14px 0;
-  }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 14px 0; }
 
-  /* SUIVI DES TÂCHES */
+  .badge {
+    display: inline-block; font-size: 10px; font-weight: 700;
+    padding: 1px 6px; border-radius: 4px; margin-left: 6px;
+    vertical-align: middle; text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .badge-red { background: rgba(239,68,68,0.15); color: var(--red); }
+  .badge-green { background: rgba(34,197,94,0.15); color: var(--green); }
+  .badge-orange { background: rgba(245,158,11,0.15); color: var(--orange); }
+
+  /* TASKS */
   .tasks-section {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    overflow: hidden;
-    margin-bottom: 16px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden; margin-bottom: 16px;
   }
   .tasks-header {
     background: linear-gradient(90deg, rgba(79,142,247,0.1), transparent);
-    border-bottom: 1px solid var(--border);
-    padding: 16px 20px;
+    border-bottom: 1px solid var(--border); padding: 16px 20px;
   }
   .tasks-header h2 {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 16px;
-    font-weight: 700;
-    color: #fff;
+    font-size: 16px; font-weight: 700; color: #fff;
   }
   .tasks-body { padding: 16px 20px; }
 
   .task-group { margin-bottom: 20px; }
   .task-group:last-child { margin-bottom: 0; }
   .task-group-label {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; margin-bottom: 10px;
+    padding-bottom: 8px; border-bottom: 1px solid var(--border);
   }
   .task-group-label.urgent { color: var(--red); }
   .task-group-label.todo { color: var(--orange); }
   .task-group-label.continu { color: var(--blue); }
 
   .task-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 8px 10px;
-    border-radius: 6px;
-    margin-bottom: 4px;
-    transition: background 0.15s;
+    display: flex; align-items: center; gap: 10px;
+    padding: 9px 12px;
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 8px; margin-bottom: 6px;
+    transition: opacity 0.2s;
     cursor: pointer;
   }
-  .task-item:hover { background: var(--surface2); }
-  .task-item input[type="checkbox"] {
-    margin-top: 2px;
-    width: 16px;
-    height: 16px;
-    accent-color: var(--accent);
-    cursor: pointer;
-    flex-shrink: 0;
-  }
-  .task-label { font-size: 13px; flex: 1; }
-  .task-label.done {
-    text-decoration: line-through;
-    color: var(--muted);
-  }
-  .task-who {
-    font-weight: 600;
-    color: #fff;
-  }
-  .task-desc { color: #b0b8d0; }
+  .task-item:hover { border-color: var(--accent); }
+  .task-item.done { opacity: 0.45; }
+  .task-item.done .task-text { text-decoration: line-through; color: var(--muted); }
 
-  /* FOOTER */
+  .task-cb {
+    width: 17px; height: 17px;
+    accent-color: var(--accent);
+    cursor: pointer; flex-shrink: 0;
+  }
+
+  .task-content { flex: 1; display: flex; align-items: center; flex-wrap: wrap; gap: 5px; }
+
+  .task-who-badge {
+    display: inline-flex; align-items: center;
+    background: rgba(79,142,247,0.12);
+    border: 1px solid rgba(79,142,247,0.3);
+    border-radius: 20px; padding: 2px 9px;
+    font-size: 11px; font-weight: 600; color: var(--accent);
+    white-space: nowrap; flex-shrink: 0;
+  }
+
+  .task-text { font-size: 13px; color: #c8cce0; }
+
   .footer-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 16px 20px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 16px 20px;
+    display: flex; align-items: center; gap: 12px;
   }
   .footer-icon { font-size: 24px; }
-  .footer-label {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--muted);
-    font-weight: 600;
-  }
-  .footer-value {
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--text);
-    margin-top: 2px;
-  }
-
-  /* BADGE */
-  .badge {
-    display: inline-block;
-    font-size: 10px;
-    font-weight: 700;
-    padding: 1px 6px;
-    border-radius: 4px;
-    margin-left: 6px;
-    vertical-align: middle;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-  .badge-red { background: rgba(239,68,68,0.15); color: var(--red); }
-  .badge-green { background: rgba(34,197,94,0.15); color: var(--green); }
-  .badge-orange { background: rgba(245,158,11,0.15); color: var(--orange); }
+  .footer-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-weight: 600; }
+  .footer-value { font-size: 15px; font-weight: 600; color: var(--text); margin-top: 2px; }
 
   @media (max-width: 480px) {
     header { padding: 24px 16px 20px; }
-    .section-body { padding: 14px 14px; }
-    .tasks-body { padding: 14px 14px; }
+    .section-body { padding: 14px; }
+    .tasks-body { padding: 14px; }
   }
 </style>
 </head>
@@ -417,7 +264,7 @@
 
 <main>
 
-  <!-- 1. ADMINISTRATIF -->
+  <!-- 1 -->
   <div class="section" id="s1">
     <div class="section-header" onclick="toggle(this)">
       <span class="section-number">1</span>
@@ -439,7 +286,7 @@
     </div>
   </div>
 
-  <!-- 2. LICENCES -->
+  <!-- 2 -->
   <div class="section" id="s2">
     <div class="section-header" onclick="toggle(this)">
       <span class="section-number">2</span>
@@ -459,7 +306,7 @@
     </div>
   </div>
 
-  <!-- 3. RECRUTEMENT -->
+  <!-- 3 -->
   <div class="section" id="s3">
     <div class="section-header" onclick="toggle(this)">
       <span class="section-number">3</span>
@@ -467,7 +314,6 @@
       <span class="chevron">▼</span>
     </div>
     <div class="section-body">
-
       <div class="bloc">
         <div class="bloc-title">👋 Équipe d'accueil</div>
         <ul class="points">
@@ -478,21 +324,17 @@
           <li>Donner accès au fichier accueil à Chloé → @Roro</li>
         </ul>
       </div>
-
       <hr class="divider">
-
       <div class="bloc">
         <div class="bloc-title">📱 Communication digitale</div>
         <ul class="points">
           <li>Nouveau CA → nouvelle politique réseaux sociaux</li>
           <li>Val + PH animent les réseaux sociaux</li>
-          <li>Mail à toutes les personnes déjà venues au club (ceux qui ont choisi de rester)</li>
+          <li>Mail à toutes les personnes déjà venues au club</li>
           <li>Réunion avec la région (Teams) sur nouveaux sports dont RCL → @Nico + @PH</li>
         </ul>
       </div>
-
       <hr class="divider">
-
       <div class="bloc">
         <div class="bloc-title">📅 Événements recrutement</div>
         <ul class="points">
@@ -501,12 +343,10 @@
           <li><strong>Sept</strong> : Événement Métropole de Lyon (date à préciser)</li>
           <li>Lundi : Réunion PH + Nico avec présidents de Saint-Priest</li>
           <li>Sport Easy à renseigner pour chaque date → @Riri</li>
-          <li>Budget flyers + oriflamme : ~200€ (à valider)</li>
+          <li>Budget flyers + oriflamme : ~200€ (à valider) → <strong>Val + PH</strong></li>
         </ul>
       </div>
-
       <hr class="divider">
-
       <div class="bloc">
         <div class="bloc-title">👶 Intégration des jeunes</div>
         <ul class="points">
@@ -517,11 +357,11 @@
           <li>Laureline : test tout septembre <span class="badge badge-green">Validé CA</span> — Bilan fin septembre</li>
         </ul>
       </div>
-
       <div class="actions">
         <div class="actions-title">🎯 Actions</div>
         <div class="action-item"><span class="action-arrow">→</span><span class="action-who">Chloé</span><span class="action-text"> : Responsable accueil nouveaux (accès Excel + mails via Roro)</span></div>
         <div class="action-item"><span class="action-arrow">→</span><span class="action-who">PH + Roro</span><span class="action-text"> : Donner accès Excel et mails des nouveaux à Chloé</span></div>
+        <div class="action-item"><span class="action-arrow">→</span><span class="action-who">Val + PH</span><span class="action-text"> : Création oriflamme + flyers (~200€)</span></div>
         <div class="action-item"><span class="action-arrow">→</span><span class="action-who">Riri</span><span class="action-text"> : Renseigner Sport Easy pour tous les événements recrutement</span></div>
         <div class="action-item"><span class="action-arrow">→</span><span class="action-who">Val + PH</span><span class="action-text"> : Animer les réseaux sociaux</span></div>
         <div class="action-item"><span class="action-arrow">→</span><span class="action-who">Nico</span><span class="action-text"> : Réunion présidents St-Priest (lundi) + com' début saison Sport Easy</span></div>
@@ -531,7 +371,7 @@
     </div>
   </div>
 
-  <!-- 4. FINANCES -->
+  <!-- 4 -->
   <div class="section" id="s4">
     <div class="section-header" onclick="toggle(this)">
       <span class="section-number">4</span>
@@ -539,7 +379,6 @@
       <span class="chevron">▼</span>
     </div>
     <div class="section-body">
-
       <div class="bloc">
         <div class="bloc-title">📆 Calendrier financier</div>
         <ul class="points">
@@ -549,9 +388,7 @@
           <li>15j après chaque événement : tableau dépenses/remb. → remboursement sous 1 mois</li>
         </ul>
       </div>
-
       <hr class="divider">
-
       <div class="bloc">
         <div class="bloc-title">💰 Organisation trésorerie</div>
         <ul class="points">
@@ -561,7 +398,6 @@
           <li>Point clôture des comptes : Max + @Nico + @PH</li>
         </ul>
       </div>
-
       <div class="actions">
         <div class="actions-title">🎯 Actions</div>
         <div class="action-item"><span class="action-arrow">→</span><span class="action-who">Max</span><span class="action-text"> : Listing créances + qui doit quoi <span class="badge badge-red">Avant fin juillet ⚠️</span></span></div>
@@ -569,7 +405,7 @@
     </div>
   </div>
 
-  <!-- 5. CONVIVIALITE -->
+  <!-- 5 -->
   <div class="section" id="s5">
     <div class="section-header" onclick="toggle(this)">
       <span class="section-number">5</span>
@@ -577,25 +413,20 @@
       <span class="chevron">▼</span>
     </div>
     <div class="section-body">
-
       <div class="bloc">
         <div class="bloc-title">🍺 Bar Décathlon</div>
         <ul class="points">
           <li>1 fois en fin de saison, à répéter si succès → 1er mercredi du mois (entraînement raccourci ce soir-là)</li>
         </ul>
       </div>
-
       <hr class="divider">
-
       <div class="bloc">
         <div class="bloc-title">🔁 Reprise</div>
         <ul class="points">
           <li><strong>31 août</strong> : reprise officielle + verre pour marquer le coup 🍺</li>
         </ul>
       </div>
-
       <hr class="divider">
-
       <div class="bloc">
         <div class="bloc-title">📅 Calendrier événements</div>
         <ul class="points">
@@ -605,7 +436,6 @@
           <li><strong>24 oct</strong> : GTT (demandé par Elo) <span class="badge badge-orange">⚠️ Pas de stade confirmé</span> — pas de planning reçu de la FFR → relance dans 10j !!!</li>
         </ul>
       </div>
-
       <div class="actions">
         <div class="actions-title">🎯 Actions</div>
         <div class="action-item"><span class="action-arrow">→</span><span class="action-who">Riri</span><span class="action-text"> : Bar Décathlon (1er mercredi du mois) + verre reprise 31 août</span></div>
@@ -616,7 +446,7 @@
     </div>
   </div>
 
-  <!-- 6. SPORT -->
+  <!-- 6 -->
   <div class="section" id="s6">
     <div class="section-header" onclick="toggle(this)">
       <span class="section-number">6</span>
@@ -624,7 +454,6 @@
       <span class="chevron">▼</span>
     </div>
     <div class="section-body">
-
       <div class="bloc">
         <div class="bloc-title">🏃 Entraînements</div>
         <ul class="points">
@@ -633,9 +462,7 @@
           <li>Mettre "Présent" par défaut → @Coachs</li>
         </ul>
       </div>
-
       <hr class="divider">
-
       <div class="bloc">
         <div class="bloc-title">🟡 Arbitrage GTT</div>
         <ul class="points">
@@ -644,9 +471,7 @@
           <li>Communiquer sur site/WhatsApp Ref (via les Nanas ?)</li>
         </ul>
       </div>
-
       <hr class="divider">
-
       <div class="bloc">
         <div class="bloc-title">📋 Formation</div>
         <ul class="points">
@@ -654,9 +479,7 @@
           <li>Formation coach L1 à explorer → Seb se renseigne + motiver Baptiste</li>
         </ul>
       </div>
-
       <hr class="divider">
-
       <div class="bloc">
         <div class="bloc-title">⚽ Ligue Lyonnaise</div>
         <ul class="points">
@@ -665,7 +488,6 @@
           <li><strong>02 déc</strong> : RCVS reçoit</li>
         </ul>
       </div>
-
       <div class="actions">
         <div class="actions-title">🎯 Actions</div>
         <div class="action-item"><span class="action-arrow">→</span><span class="action-who">Seb</span><span class="action-text"> : Formation coach L1 + motiver Baptiste</span></div>
@@ -674,7 +496,7 @@
     </div>
   </div>
 
-  <!-- 7. DIVERS -->
+  <!-- 7 -->
   <div class="section" id="s7">
     <div class="section-header" onclick="toggle(this)">
       <span class="section-number">7</span>
@@ -694,7 +516,7 @@
     </div>
   </div>
 
-  <!-- SUIVI DES TÂCHES -->
+  <!-- TÂCHES -->
   <div class="tasks-section" id="tasks">
     <div class="tasks-header">
       <h2>✅ Suivi des tâches</h2>
@@ -703,100 +525,191 @@
 
       <div class="task-group">
         <div class="task-group-label urgent">🔴 Urgent — avant fin juillet</div>
-        <div class="task-item" onclick="toggleTask(this)">
-          <input type="checkbox">
-          <div class="task-label"><span class="task-who">Max</span> <span class="task-desc">: Listing créances / qui doit quoi</span></div>
+
+        <div class="task-item" id="t1" onclick="toggleDone('t1')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation(); toggleDone('t1')">
+          <div class="task-content">
+            <span class="task-who-badge">Max</span>
+            <span class="task-text">Listing créances / qui doit quoi</span>
+          </div>
         </div>
-        <div class="task-item" onclick="toggleTask(this)">
-          <input type="checkbox">
-          <div class="task-label"><span class="task-who">Seb</span> <span class="task-desc">: Message banquière (docs nécessaires)</span></div>
+
+        <div class="task-item" id="t2" onclick="toggleDone('t2')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation(); toggleDone('t2')">
+          <div class="task-content">
+            <span class="task-who-badge">Seb</span>
+            <span class="task-text">Message banquière (docs nécessaires)</span>
+          </div>
         </div>
-        <div class="task-item" onclick="toggleTask(this)">
-          <input type="checkbox">
-          <div class="task-label"><span class="task-who">Lulu</span> <span class="task-desc">: CR AG + passage banque</span></div>
+
+        <div class="task-item" id="t3" onclick="toggleDone('t3')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation(); toggleDone('t3')">
+          <div class="task-content">
+            <span class="task-who-badge">Lulu</span>
+            <span class="task-text">CR AG + passage banque</span>
+          </div>
         </div>
-        <div class="task-item" onclick="toggleTask(this)">
-          <input type="checkbox">
-          <div class="task-label"><span class="task-who">Seb + PH</span> <span class="task-desc">: Droits logiciel TF licences</span></div>
+
+        <div class="task-item" id="t4" onclick="toggleDone('t4')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation(); toggleDone('t4')">
+          <div class="task-content">
+            <span class="task-who-badge">Seb</span>
+            <span class="task-who-badge">PH</span>
+            <span class="task-text">Droits logiciel TF licences</span>
+          </div>
         </div>
-        <div class="task-item" onclick="toggleTask(this)">
-          <input type="checkbox">
-          <div class="task-label"><span class="task-who">PH + Roro</span> <span class="task-desc">: Accès Excel + mails nouveaux → Chloé</span></div>
+
+        <div class="task-item" id="t5" onclick="toggleDone('t5')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation(); toggleDone('t5')">
+          <div class="task-content">
+            <span class="task-who-badge">PH</span>
+            <span class="task-who-badge">Roro</span>
+            <span class="task-text">Accès Excel + mails nouveaux → Chloé</span>
+          </div>
         </div>
       </div>
 
       <div class="task-group">
         <div class="task-group-label todo">🟡 À faire — août / septembre</div>
-        <div class="task-item" onclick="toggleTask(this)">
-          <input type="checkbox">
-          <div class="task-label"><span class="task-who">Chloé + Roro</span> <span class="task-desc">: Inventaire matos (chasubles, numéros, ballons)</span></div>
+
+        <div class="task-item" id="t6" onclick="toggleDone('t6')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation(); toggleDone('t6')">
+          <div class="task-content">
+            <span class="task-who-badge">Chloé</span>
+            <span class="task-who-badge">Roro</span>
+            <span class="task-text">Inventaire matos (chasubles, numéros, ballons)</span>
+          </div>
         </div>
-        <div class="task-item" onclick="toggleTask(this)">
-          <input type="checkbox">
-          <div class="task-label"><span class="task-who">Chloé</span> <span class="task-desc">: Responsable accueil nouveaux</span></div>
+
+        <div class="task-item" id="t7" onclick="toggleDone('t7')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation(); toggleDone('t7')">
+          <div class="task-content">
+            <span class="task-who-badge">Chloé</span>
+            <span class="task-text">Responsable accueil nouveaux</span>
+          </div>
         </div>
-        <div class="task-item" onclick="toggleTask(this)">
-          <input type="checkbox">
-          <div class="task-label"><span class="task-who">Riri</span> <span class="task-desc">: Sport Easy pour événements recrutement</span></div>
+
+        <div class="task-item" id="t8" onclick="toggleDone('t8')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation(); toggleDone('t8')">
+          <div class="task-content">
+            <span class="task-who-badge">Val</span>
+            <span class="task-who-badge">PH</span>
+            <span class="task-text">Création oriflamme + flyers (~200€)</span>
+          </div>
         </div>
-        <div class="task-item" onclick="toggleTask(this)">
-          <input type="checkbox">
-          <div class="task-label"><span class="task-who">Riri</span> <span class="task-desc">: Bar Décathlon 1er mercredi du mois</span></div>
+
+        <div class="task-item" id="t9" onclick="toggleDone('t9')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation(); toggleDone('t9')">
+          <div class="task-content">
+            <span class="task-who-badge">Riri</span>
+            <span class="task-text">Sport Easy pour événements recrutement</span>
+          </div>
         </div>
-        <div class="task-item" onclick="toggleTask(this)">
-          <input type="checkbox">
-          <div class="task-label"><span class="task-who">Riri</span> <span class="task-desc">: Verre reprise 31 août</span></div>
+
+        <div class="task-item" id="t10" onclick="toggleDone('t10')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation(); toggleDone('t10')">
+          <div class="task-content">
+            <span class="task-who-badge">Riri</span>
+            <span class="task-text">Bar Décathlon 1er mercredi du mois</span>
+          </div>
         </div>
-        <div class="task-item" onclick="toggleTask(this)">
-          <input type="checkbox">
-          <div class="task-label"><span class="task-who">Val + PH</span> <span class="task-desc">: Animer les réseaux sociaux</span></div>
+
+        <div class="task-item" id="t11" onclick="toggleDone('t11')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation(); toggleDone('t11')">
+          <div class="task-content">
+            <span class="task-who-badge">Riri</span>
+            <span class="task-text">Organiser verre reprise 31 août</span>
+          </div>
         </div>
-        <div class="task-item" onclick="toggleTask(this)">
-          <input type="checkbox">
-          <div class="task-label"><span class="task-who">Nico</span> <span class="task-desc">: Réunion présidents St-Priest (lundi)</span></div>
+
+        <div class="task-item" id="t12" onclick="toggleDone('t12')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation(); toggleDone('t12')">
+          <div class="task-content">
+            <span class="task-who-badge">Val</span>
+            <span class="task-who-badge">PH</span>
+            <span class="task-text">Animer les réseaux sociaux</span>
+          </div>
         </div>
-        <div class="task-item" onclick="toggleTask(this)">
-          <input type="checkbox">
-          <div class="task-label"><span class="task-who">Nico</span> <span class="task-desc">: Com' début de saison Sport Easy</span></div>
+
+        <div class="task-item" id="t13" onclick="toggleDone('t13')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation(); toggleDone('t13')">
+          <div class="task-content">
+            <span class="task-who-badge">Nico</span>
+            <span class="task-text">Réunion présidents St-Priest (lundi)</span>
+          </div>
         </div>
-        <div class="task-item" onclick="toggleTask(this)">
-          <input type="checkbox">
-          <div class="task-label"><span class="task-who">Roro</span> <span class="task-desc">: Relances individuelles joueurs (tous tournois)</span></div>
+
+        <div class="task-item" id="t14" onclick="toggleDone('t14')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation(); toggleDone('t14')">
+          <div class="task-content">
+            <span class="task-who-badge">Nico</span>
+            <span class="task-text">Com' début de saison Sport Easy</span>
+          </div>
         </div>
-        <div class="task-item" onclick="toggleTask(this)">
-          <input type="checkbox">
-          <div class="task-label"><span class="task-who">Roro</span> <span class="task-desc">: Domiciliation adresse Canut</span></div>
+
+        <div class="task-item" id="t15" onclick="toggleDone('t15')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation(); toggleDone('t15')">
+          <div class="task-content">
+            <span class="task-who-badge">Roro</span>
+            <span class="task-text">Relances individuelles joueurs (tous tournois)</span>
+          </div>
         </div>
-        <div class="task-item" onclick="toggleTask(this)">
-          <input type="checkbox">
-          <div class="task-label"><span class="task-who">PH</span> <span class="task-desc">: Contacter Sami (GTT / organisation)</span></div>
+
+        <div class="task-item" id="t16" onclick="toggleDone('t16')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation(); toggleDone('t16')">
+          <div class="task-content">
+            <span class="task-who-badge">Roro</span>
+            <span class="task-text">Domiciliation adresse Canut</span>
+          </div>
         </div>
-        <div class="task-item" onclick="toggleTask(this)">
-          <input type="checkbox">
-          <div class="task-label"><span class="task-who">Elo</span> <span class="task-desc">: Relance Anne-Lise dans 10j (stade GTT 24 oct)</span></div>
+
+        <div class="task-item" id="t17" onclick="toggleDone('t17')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation(); toggleDone('t17')">
+          <div class="task-content">
+            <span class="task-who-badge">PH</span>
+            <span class="task-text">Contacter Sami (GTT / organisation)</span>
+          </div>
         </div>
-        <div class="task-item" onclick="toggleTask(this)">
-          <input type="checkbox">
-          <div class="task-label"><span class="task-who">Seb</span> <span class="task-desc">: Formation coach L1 + motiver Baptiste</span></div>
+
+        <div class="task-item" id="t18" onclick="toggleDone('t18')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation(); toggleDone('t18')">
+          <div class="task-content">
+            <span class="task-who-badge">Elo</span>
+            <span class="task-text">Relance Anne-Lise dans 10j (stade GTT 24 oct)</span>
+          </div>
         </div>
-        <div class="task-item" onclick="toggleTask(this)">
-          <input type="checkbox">
-          <div class="task-label"><span class="task-who">Lulu</span> <span class="task-desc">: Gérer invitations (à confirmer selon dispo)</span></div>
+
+        <div class="task-item" id="t19" onclick="toggleDone('t19')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation(); toggleDone('t19')">
+          <div class="task-content">
+            <span class="task-who-badge">Seb</span>
+            <span class="task-text">Formation coach L1 + motiver Baptiste</span>
+          </div>
+        </div>
+
+        <div class="task-item" id="t20" onclick="toggleDone('t20')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation(); toggleDone('t20')">
+          <div class="task-content">
+            <span class="task-who-badge">Lulu</span>
+            <span class="task-text">Gérer invitations (à confirmer selon dispo)</span>
+          </div>
         </div>
       </div>
 
       <div class="task-group">
         <div class="task-group-label continu">🔵 Continu</div>
-        <div class="task-item" onclick="toggleTask(this)">
-          <input type="checkbox">
-          <div class="task-label"><span class="task-who">À définir</span> <span class="task-desc">: Carte Décathlon club (juillet/août)</span></div>
-        </div>
-      </div>
 
+        <div class="task-item" id="t21" onclick="toggleDone('t21')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation(); toggleDone('t21')">
+          <div class="task-content">
+            <span class="task-text">Carte Décathlon club (juillet/août)</span>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 
-  <!-- FOOTER -->
   <div class="footer-card">
     <div class="footer-icon">📅</div>
     <div>
@@ -812,35 +725,36 @@
     header.parentElement.classList.toggle('collapsed');
   }
 
-  function toggleTask(item) {
-    const cb = item.querySelector('input[type="checkbox"]');
-    const label = item.querySelector('.task-label');
-    if (event.target !== cb) cb.checked = !cb.checked;
-    label.classList.toggle('done', cb.checked);
-    saveState();
+  function toggleDone(id) {
+    const item = document.getElementById(id);
+    const cb = item.querySelector('.task-cb');
+    cb.checked = !cb.checked;
+    item.classList.toggle('done', cb.checked);
+    save();
   }
 
-  function saveState() {
-    const checkboxes = document.querySelectorAll('.task-item input[type="checkbox"]');
-    const state = Array.from(checkboxes).map(cb => cb.checked);
-    localStorage.setItem('canut_tasks', JSON.stringify(state));
+  function save() {
+    const state = {};
+    document.querySelectorAll('.task-item[id]').forEach(item => {
+      state[item.id] = item.querySelector('.task-cb').checked;
+    });
+    try { localStorage.setItem('canut_cr_2026_07', JSON.stringify(state)); } catch(e) {}
   }
 
-  function loadState() {
-    const saved = localStorage.getItem('canut_tasks');
-    if (!saved) return;
-    const state = JSON.parse(saved);
-    const items = document.querySelectorAll('.task-item');
-    items.forEach((item, i) => {
-      if (state[i]) {
-        item.querySelector('input').checked = true;
-        item.querySelector('.task-label').classList.add('done');
+  function load() {
+    let state;
+    try { state = JSON.parse(localStorage.getItem('canut_cr_2026_07') || '{}'); } catch(e) { return; }
+    Object.entries(state).forEach(([id, done]) => {
+      const item = document.getElementById(id);
+      if (!item) return;
+      if (done) {
+        item.querySelector('.task-cb').checked = true;
+        item.classList.add('done');
       }
     });
   }
 
-  loadState();
+  load();
 </script>
-
 </body>
 </html>
