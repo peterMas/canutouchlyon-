@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CR CA — Canu Touch Lyon | Septembre 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap');
+
+  :root {
+    --bg: #0f1117;
+    --surface: #181c27;
+    --surface2: #1e2335;
+    --border: #2a2f45;
+    --accent: #4f8ef7;
+    --green: #22c55e;
+    --orange: #f59e0b;
+    --red: #ef4444;
+    --blue: #3b82f6;
+    --text: #e8eaf0;
+    --muted: #8b92a8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 60px;
+  }
+
+  header {
+    background: linear-gradient(135deg, #1a1f35 0%, #0f1117 60%);
+    border-bottom: 1px solid var(--border);
+    padding: 32px 24px 28px;
+    position: relative; overflow: hidden;
+  }
+  header::before {
+    content: '🏉';
+    position: absolute; right: 20px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 64px; opacity: 0.12;
+  }
+  .club-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 8px;
+  }
+  header h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(20px, 5vw, 28px);
+    font-weight: 700; color: #fff; line-height: 1.2;
+  }
+  .meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+  .meta-chip {
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 6px; padding: 4px 12px;
+    font-size: 13px; color: var(--muted);
+  }
+  .meta-chip strong { color: var(--text); font-weight: 600; }
+
+  nav {
+    position: sticky; top: 0; z-index: 10;
+    background: rgba(15,17,23,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 16px;
+    overflow-x: auto; white-space: nowrap; scrollbar-width: none;
+  }
+  nav::-webkit-scrollbar { display: none; }
+  nav ul { display: inline-flex; list-style: none; gap: 2px; padding: 8px 0; }
+  nav a {
+    display: inline-block; padding: 6px 12px; border-radius: 6px;
+    font-size: 12px; font-weight: 500; color: var(--muted);
+    text-decoration: none; transition: all 0.15s;
+  }
+  nav a:hover { background: var(--surface2); color: var(--text); }
+
+  main { max-width: 720px; margin: 0 auto; padding: 24px 16px 0; }
+
+  .section {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; margin-bottom: 16px; overflow: hidden;
+  }
+  .section-header {
+    display: flex; align-items: center; gap: 10px;
+    padding: 16px 20px; border-bottom: 1px solid var(--border);
+    cursor: pointer; user-select: none;
+  }
+  .section-number {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 11px; font-weight: 700; color: var(--accent);
+    background: rgba(79,142,247,0.1);
+    border: 1px solid rgba(79,142,247,0.2);
+    border-radius: 4px; padding: 2px 7px; min-width: 28px; text-align: center;
+  }
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 15px; font-weight: 700; color: #fff; flex: 1;
+  }
+  .chevron { color: var(--muted); font-size: 12px; transition: transform 0.2s; }
+  .section.collapsed .chevron { transform: rotate(-90deg); }
+  .section-body { padding: 16px 20px; }
+  .section.collapsed .section-body { display: none; }
+
+  .bloc { margin-bottom: 16px; }
+  .bloc:last-child { margin-bottom: 0; }
+  .bloc-title {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 8px;
+  }
+
+  ul.points { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+  ul.points li { padding-left: 16px; position: relative; font-size: 14px; color: #c8cce0; }
+  ul.points li::before { content: '–'; position: absolute; left: 0; color: var(--muted); }
+
+  .actions {
+    background: rgba(79,142,247,0.05);
+    border: 1px solid rgba(79,142,247,0.15);
+    border-radius: 8px; padding: 12px 14px; margin-top: 12px;
+  }
+  .actions-title {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 8px;
+  }
+  .action-item {
+    display: flex; gap: 8px; align-items: flex-start;
+    padding: 4px 0; font-size: 13px;
+    border-bottom: 1px solid rgba(79,142,247,0.08);
+  }
+  .action-item:last-child { border-bottom: none; }
+  .action-arrow { color: var(--accent); flex-shrink: 0; margin-top: 1px; }
+  .action-who { font-weight: 600; color: #fff; flex-shrink: 0; }
+  .action-text { color: #b0b8d0; }
+
+  .divider { border: none; border-top: 1px solid var(--border); margin: 14px 0; }
+
+  .badge {
+    display: inline-block; font-size: 10px; font-weight: 700;
+    padding: 1px 6px; border-radius: 4px; margin-left: 6px;
+    vertical-align: middle; text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .badge-red { background: rgba(239,68,68,0.15); color: var(--red); }
+  .badge-green { background: rgba(34,197,94,0.15); color: var(--green); }
+  .badge-orange { background: rgba(245,158,11,0.15); color: var(--orange); }
+
+  /* TASKS */
+  .tasks-section {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden; margin-bottom: 16px;
+  }
+  .tasks-header {
+    background: linear-gradient(90deg, rgba(79,142,247,0.1), transparent);
+    border-bottom: 1px solid var(--border); padding: 16px 20px;
+  }
+  .tasks-header h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px; font-weight: 700; color: #fff;
+  }
+  .tasks-body { padding: 16px 20px; }
+
+  .task-group { margin-bottom: 20px; }
+  .task-group:last-child { margin-bottom: 0; }
+  .task-group-label {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; margin-bottom: 10px;
+    padding-bottom: 8px; border-bottom: 1px solid var(--border);
+  }
+  .task-group-label.urgent { color: var(--red); }
+  .task-group-label.todo { color: var(--orange); }
+  .task-group-label.continu { color: var(--blue); }
+
+  .task-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 9px 12px;
+    background: var(--surface2); border: 1px solid var(--border);
+    border-radius: 8px; margin-bottom: 6px;
+    transition: opacity 0.2s; cursor: pointer;
+  }
+  .task-item:hover { border-color: var(--accent); }
+  .task-item.done { opacity: 0.45; }
+  .task-item.done .task-text { text-decoration: line-through; color: var(--muted); }
+
+  .task-cb {
+    width: 17px; height: 17px;
+    accent-color: var(--accent);
+    cursor: pointer; flex-shrink: 0;
+  }
+
+  .task-content { flex: 1; display: flex; align-items: center; flex-wrap: wrap; gap: 5px; }
+
+  .task-who-badge {
+    display: inline-flex; align-items: center;
+    background: rgba(79,142,247,0.12);
+    border: 1px solid rgba(79,142,247,0.3);
+    border-radius: 20px; padding: 2px 9px;
+    font-size: 11px; font-weight: 600; color: var(--accent);
+    white-space: nowrap; flex-shrink: 0;
+  }
+
+  .task-text { font-size: 13px; color: #c8cce0; }
+
+  .footer-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; padding: 16px 20px;
+    display: flex; gap: 16px; flex-wrap: wrap;
+  }
+  .footer-item { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 200px; }
+  .footer-icon { font-size: 22px; }
+  .footer-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); font-weight: 600; }
+  .footer-value { font-size: 14px; font-weight: 600; color: var(--text); margin-top: 2px; }
+
+  @media (max-width: 480px) {
+    header { padding: 24px 16px 20px; }
+    .section-body { padding: 14px; }
+    .tasks-body { padding: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="club-name">🏉 Canu Touch Lyon</div>
+  <h1>Compte Rendu CA</h1>
+  <div class="meta">
+    <div class="meta-chip">📅 <strong>Septembre 2026</strong></div>
+    <div class="meta-chip">🕐 <strong>Prochain CA : 20 oct à 19h15</strong></div>
+    <div class="meta-chip">🏉 <strong>Réunion GTT : 06 oct à 19h15</strong></div>
+  </div>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#s1">Remboursements</a></li>
+    <li><a href="#s2">Banque</a></li>
+    <li><a href="#s3">Licences</a></li>
+    <li><a href="#s4">Recrutement</a></li>
+    <li><a href="#s5">Mineurs</a></li>
+    <li><a href="#s6">Tournois</a></li>
+    <li><a href="#s7">Formations</a></li>
+    <li><a href="#s8">GTT 2026</a></li>
+    <li><a href="#s9">Divers</a></li>
+    <li><a href="#tasks">✅ Tâches</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- 1. REMBOURSEMENTS -->
+  <div class="section" id="s1">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-number">1</span>
+      <span class="section-title">État des remboursements 2025/2026</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <div class="bloc">
+        <div class="bloc-title">✅ Points OK</div>
+        <ul class="points">
+          <li>Frais avancés par les Canuts : <strong>OK</strong></li>
+          <li>Paiement camping cohésion : <strong>OK</strong></li>
+        </ul>
+      </div>
+      <hr class="divider">
+      <div class="bloc">
+        <div class="bloc-title">⚠️ Terrain GTT Villeurbanne</div>
+        <ul class="points">
+          <li>Saisie bancaire faite</li>
+          <li>Virement fait par Sébastien : <span class="badge badge-red">Rejeté</span></li>
+          <li>Roro doit envoyer l'avis à Max</li>
+          <li>Max doit répondre au mail de Villeurbanne pour faire amende honorable</li>
+        </ul>
+      </div>
+      <hr class="divider">
+      <div class="bloc">
+        <div class="bloc-title">📋 Autres points</div>
+        <ul class="points">
+          <li>Maillots : relance faite le 21/09</li>
+          <li>Participation Supertouch : réconciliation à faire → Roro + Max</li>
+          <li>Décohésion : Richard doit envoyer la liste des participants</li>
+          <li>Lulu : envoyer tickets 10 ans</li>
+        </ul>
+      </div>
+      <div class="actions">
+        <div class="actions-title">🎯 Actions</div>
+        <div class="action-item"><span class="action-arrow">→</span><span class="action-who">Lulu</span><span class="action-text"> : Envoyer tickets 10 ans</span></div>
+        <div class="action-item"><span class="action-arrow">→</span><span class="action-who">Roro</span><span class="action-text"> : Envoyer avis terrain GTT à Max</span></div>
+        <div class="action-item"><span class="action-arrow">→</span><span class="action-who">Max</span><span class="action-text"> : Répondre au mail de Villeurbanne (amende honorable)</span></div>
+        <div class="action-item"><span class="action-arrow">→</span><span class="action-who">Roro</span><span class="action-text"> : Réconciliation Supertouch avec Max</span></div>
+        <div class="action-item"><span class="action-arrow">→</span><span class="action-who">Richard</span><span class="action-text"> : Envoyer liste participants Décohésion</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. BANQUE -->
+  <div class="section" id="s2">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-number">2</span>
+      <span class="section-title">Banque</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <ul class="points">
+        <li>PV de l'AG : Lulu doit l'envoyer à Max</li>
+        <li>Dépôt de signature : PH doit prévoir un passage en banque</li>
+      </ul>
+      <div class="actions">
+        <div class="actions-title">🎯 Actions</div>
+        <div class="action-item"><span class="action-arrow">→</span><span class="action-who">Lulu</span><span class="action-text"> : Envoyer PV de l'AG à Max</span></div>
+        <div class="action-item"><span class="action-arrow">→</span><span class="action-who">PH</span><span class="action-text"> : Prévoir passage en banque pour dépôt de signature</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. LICENCES -->
+  <div class="section" id="s3">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-number">3</span>
+      <span class="section-title">Licences</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <div class="bloc">
+        <div class="bloc-title">💳 Paiement 190€ sur RIB Canuts — en attente pour :</div>
+        <ul class="points">
+          <li>Roro</li>
+          <li>Maeva</li>
+          <li>Max</li>
+          <li>PH</li>
+          <li>Richard</li>
+          <li>Seb</li>
+        </ul>
+      </div>
+      <hr class="divider">
+      <div class="bloc">
+        <div class="bloc-title">🔒 Licences bloquées</div>
+        <ul class="points">
+          <li>Validations bloquées pour licences sans assurance → PH en charge du déblocage</li>
+          <li>Accès pour visualiser les licences : Max à voir avec PH</li>
+        </ul>
+      </div>
+      <div class="actions">
+        <div class="actions-title">🎯 Actions</div>
+        <div class="action-item"><span class="action-arrow">→</span><span class="action-who">Roro, Maeva, Max, PH, Richard, Seb</span><span class="action-text"> : Payer 190€ sur le RIB Canuts</span></div>
+        <div class="action-item"><span class="action-arrow">→</span><span class="action-who">PH</span><span class="action-text"> : Débloquer les licences sans assurance</span></div>
+        <div class="action-item"><span class="action-arrow">→</span><span class="action-who">Max</span><span class="action-text"> : Voir avec PH pour accès visualisation des licences</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. RECRUTEMENT -->
+  <div class="section" id="s4">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-number">4</span>
+      <span class="section-title">Nouveaux / Recrutement / Com</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <ul class="points">
+        <li>9 nouveaux depuis début septembre <span class="badge badge-green">Super !</span> → objectif : doubler</li>
+        <li>Pas de tri fait à date — mix nouveaux/anciens pour l'instant</li>
+        <li>Les nouveaux sont contents 😊</li>
+        <li>Sport Easy : remplir au moins 24h avant l'entraînement</li>
+        <li>Communiquer sur le besoin d'arriver à l'heure</li>
+        <li>Groupe coaching : faire le lien avec les anciens non revenus → octobre</li>
+        <li>Valentine intègre le CA <span class="badge badge-green">Bienvenue !</span> → en charge communication tournois</li>
+        <li>Canal de communication sans réponse possible à mettre en place</li>
+      </ul>
+      <div class="actions">
+        <div class="actions-title">🎯 Actions</div>
+        <div class="action-item"><span class="action-arrow">→</span><span class="action-who">Valentine</span><span class="action-text"> : Communication tournois après les entraînements</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. MINEURS -->
+  <div class="section" id="s5">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-number">5</span>
+      <span class="section-title">Mineurs</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <div class="bloc">
+        <div class="bloc-title">🚫 Règles vestiaires</div>
+        <ul class="points">
+          <li>Jamais un adulte seul avec un mineur dans un local</li>
+          <li>Accès vestiaires <strong>interdit aux mineurs</strong> en attendant retour officiel de Touch France</li>
+        </ul>
+      </div>
+      <hr class="divider">
+      <div class="bloc">
+        <div class="bloc-title">🚗 Retour en voiture</div>
+        <ul class="points">
+          <li>Nécessite de faire le lien avec les parents</li>
+          <li>Parents à ajouter sur Sport Easy</li>
+        </ul>
+      </div>
+      <hr class="divider">
+      <div class="bloc">
+        <div class="bloc-title">📄 Charte</div>
+        <ul class="points">
+          <li>Charte à rédiger + signature parents → archiver dans le Drive</li>
+          <li>Communication préalable aux licenciés à faire <span class="badge badge-red">ASAP</span></li>
+          <li>Soirées : interdites pour les mineurs en première intention</li>
+        </ul>
+      </div>
+      <div class="actions">
+        <div class="actions-title">🎯 Actions</div>
+        <div class="action-item"><span class="action-arrow">→</span><span class="action-who">PH</span><span class="action-text"> : Communication aux licenciés sur les règles mineurs (ASAP)</span></div>
+        <div class="action-item"><span class="action-arrow">→</span><span class="action-who">PH</span><span class="action-text"> : Ajouter les parents des mineurs sur Sport Easy</span></div>
+        <div class="action-item"><span class="action-arrow">→</span><span class="action-who">Valentine + Roro</span><span class="action-text"> : Rédiger charte + recueillir signatures parents → Drive</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. TOURNOIS -->
+  <div class="section" id="s6">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-number">6</span>
+      <span class="section-title">Tournois à proposer</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <ul class="points">
+        <li>Volcanic : inscription à faire → Roro</li>
+        <li>Bourg-en-Bresse : créer événement Sport Easy → PH</li>
+        <li>Tournoi Spritz en Italie 🇮🇹 → mai (date à préciser)</li>
+        <li>EM Lyon : <span class="badge badge-orange">Annulé</span> → reporté en novembre</li>
+        <li>Communication des tournois : Valentine après les entraînements</li>
+      </ul>
+      <div class="actions">
+        <div class="actions-title">🎯 Actions</div>
+        <div class="action-item"><span class="action-arrow">→</span><span class="action-who">Roro</span><span class="action-text"> : Inscription tournoi Volcanic</span></div>
+        <div class="action-item"><span class="action-arrow">→</span><span class="action-who">PH</span><span class="action-text"> : Créer événement Sport Easy pour Bourg-en-Bresse</span></div>
+        <div class="action-item"><span class="action-arrow">→</span><span class="action-who">Valentine</span><span class="action-text"> : Communiquer sur les tournois après les entraînements</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. FORMATIONS -->
+  <div class="section" id="s7">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-number">7</span>
+      <span class="section-title">Formations L2 / L3</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <ul class="points">
+        <li>Baptiste intéressé par L2 mais ne veut pas y aller seul → Roro voit avec ASUL si joueurs intéressés</li>
+        <li>L3 : sonder les L2 du club → Seb envoie un message</li>
+        <li>Seb doit demander l'ajout de PH au canal de la ligue</li>
+      </ul>
+      <div class="actions">
+        <div class="actions-title">🎯 Actions</div>
+        <div class="action-item"><span class="action-arrow">→</span><span class="action-who">Roro</span><span class="action-text"> : Voir avec ASUL pour joueurs intéressés L2 (avec Baptiste)</span></div>
+        <div class="action-item"><span class="action-arrow">→</span><span class="action-who">Seb</span><span class="action-text"> : Message aux L2 pour sonder intérêt L3</span></div>
+        <div class="action-item"><span class="action-arrow">→</span><span class="action-who">Seb</span><span class="action-text"> : Demander ajout de PH au canal de la ligue</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. GTT 2026 -->
+  <div class="section" id="s8">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-number">8</span>
+      <span class="section-title">GTT 2026</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <ul class="points">
+        <li>Repas du soir par Cathy → à confirmer</li>
+        <li>Enveloppe arbitres : peut être augmentée avec Cathy</li>
+        <li>Point GTT complet à prévoir → réunion le 06 oct à 19h15</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 9. DIVERS -->
+  <div class="section" id="s9">
+    <div class="section-header" onclick="toggle(this)">
+      <span class="section-number">9</span>
+      <span class="section-title">Divers</span>
+      <span class="chevron">▼</span>
+    </div>
+    <div class="section-body">
+      <div class="bloc">
+        <div class="bloc-title">👕 Tournoi Total</div>
+        <ul class="points">
+          <li>PH : communiquer sur les modalités</li>
+          <li>Venir avec son chasuble !</li>
+        </ul>
+      </div>
+      <hr class="divider">
+      <div class="bloc">
+        <div class="bloc-title">👕 Chasubles</div>
+        <ul class="points">
+          <li>Point à faire sur les chasubles → PH + Seb</li>
+        </ul>
+      </div>
+      <hr class="divider">
+      <div class="bloc">
+        <div class="bloc-title">📧 Accès boite mail</div>
+        <ul class="points">
+          <li>Point accès boite mail à traiter (suite changement de bureau)</li>
+        </ul>
+      </div>
+      <hr class="divider">
+      <div class="bloc">
+        <div class="bloc-title">🎉 Intégration CA</div>
+        <ul class="points">
+          <li>Valentine François rejoint officiellement le CA <span class="badge badge-green">Bienvenue !</span></li>
+        </ul>
+      </div>
+      <hr class="divider">
+      <div class="bloc">
+        <div class="bloc-title">🏛️ Subventions</div>
+        <ul class="points">
+          <li>Point subventions à traiter lors du prochain CA</li>
+        </ul>
+      </div>
+      <div class="actions">
+        <div class="actions-title">🎯 Actions</div>
+        <div class="action-item"><span class="action-arrow">→</span><span class="action-who">PH</span><span class="action-text"> : Communiquer sur les modalités du tournoi Total</span></div>
+        <div class="action-item"><span class="action-arrow">→</span><span class="action-who">PH + Seb</span><span class="action-text"> : Point chasubles</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TÂCHES -->
+  <div class="tasks-section" id="tasks">
+    <div class="tasks-header">
+      <h2>✅ Suivi des tâches</h2>
+    </div>
+    <div class="tasks-body">
+
+      <div class="task-group">
+        <div class="task-group-label urgent">🔴 Urgent — à faire rapidement</div>
+
+        <div class="task-item" id="t1" onclick="toggleDone('t1')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation();toggleDone('t1')">
+          <div class="task-content">
+            <span class="task-who-badge">PH</span>
+            <span class="task-text">Communication règles mineurs aux licenciés (ASAP)</span>
+          </div>
+        </div>
+
+        <div class="task-item" id="t2" onclick="toggleDone('t2')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation();toggleDone('t2')">
+          <div class="task-content">
+            <span class="task-who-badge">Max</span>
+            <span class="task-text">Répondre au mail de Villeurbanne (amende honorable)</span>
+          </div>
+        </div>
+
+        <div class="task-item" id="t3" onclick="toggleDone('t3')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation();toggleDone('t3')">
+          <div class="task-content">
+            <span class="task-who-badge">Roro</span>
+            <span class="task-text">Envoyer avis terrain GTT à Max</span>
+          </div>
+        </div>
+
+        <div class="task-item" id="t4" onclick="toggleDone('t4')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation();toggleDone('t4')">
+          <div class="task-content">
+            <span class="task-who-badge">PH</span>
+            <span class="task-text">Débloquer licences sans assurance</span>
+          </div>
+        </div>
+
+        <div class="task-item" id="t5" onclick="toggleDone('t5')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation();toggleDone('t5')">
+          <div class="task-content">
+            <span class="task-who-badge">Lulu</span>
+            <span class="task-text">Envoyer PV de l'AG à Max</span>
+          </div>
+        </div>
+
+        <div class="task-item" id="t6" onclick="toggleDone('t6')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation();toggleDone('t6')">
+          <div class="task-content">
+            <span class="task-who-badge">Roro</span><span class="task-who-badge">Maeva</span><span class="task-who-badge">Max</span><span class="task-who-badge">PH</span><span class="task-who-badge">Richard</span><span class="task-who-badge">Seb</span>
+            <span class="task-text">Payer 190€ licence sur RIB Canuts</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="task-group">
+        <div class="task-group-label todo">🟡 À faire prochainement</div>
+
+        <div class="task-item" id="t7" onclick="toggleDone('t7')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation();toggleDone('t7')">
+          <div class="task-content">
+            <span class="task-who-badge">PH</span>
+            <span class="task-text">Passage en banque — dépôt de signature</span>
+          </div>
+        </div>
+
+        <div class="task-item" id="t8" onclick="toggleDone('t8')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation();toggleDone('t8')">
+          <div class="task-content">
+            <span class="task-who-badge">Lulu</span>
+            <span class="task-text">Envoyer tickets 10 ans</span>
+          </div>
+        </div>
+
+        <div class="task-item" id="t9" onclick="toggleDone('t9')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation();toggleDone('t9')">
+          <div class="task-content">
+            <span class="task-who-badge">Richard</span>
+            <span class="task-text">Envoyer liste participants Décohésion</span>
+          </div>
+        </div>
+
+        <div class="task-item" id="t10" onclick="toggleDone('t10')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation();toggleDone('t10')">
+          <div class="task-content">
+            <span class="task-who-badge">Roro</span>
+            <span class="task-text">Réconciliation Supertouch avec Max</span>
+          </div>
+        </div>
+
+        <div class="task-item" id="t11" onclick="toggleDone('t11')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation();toggleDone('t11')">
+          <div class="task-content">
+            <span class="task-who-badge">Valentine</span><span class="task-who-badge">Roro</span>
+            <span class="task-text">Rédiger charte mineurs + signatures parents → Drive</span>
+          </div>
+        </div>
+
+        <div class="task-item" id="t12" onclick="toggleDone('t12')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation();toggleDone('t12')">
+          <div class="task-content">
+            <span class="task-who-badge">PH</span>
+            <span class="task-text">Ajouter parents des mineurs sur Sport Easy</span>
+          </div>
+        </div>
+
+        <div class="task-item" id="t13" onclick="toggleDone('t13')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation();toggleDone('t13')">
+          <div class="task-content">
+            <span class="task-who-badge">Roro</span>
+            <span class="task-text">Inscription tournoi Volcanic</span>
+          </div>
+        </div>
+
+        <div class="task-item" id="t14" onclick="toggleDone('t14')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation();toggleDone('t14')">
+          <div class="task-content">
+            <span class="task-who-badge">PH</span>
+            <span class="task-text">Créer événement Sport Easy Bourg-en-Bresse</span>
+          </div>
+        </div>
+
+        <div class="task-item" id="t15" onclick="toggleDone('t15')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation();toggleDone('t15')">
+          <div class="task-content">
+            <span class="task-who-badge">PH</span>
+            <span class="task-text">Communiquer sur les modalités du tournoi Total</span>
+          </div>
+        </div>
+
+        <div class="task-item" id="t16" onclick="toggleDone('t16')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation();toggleDone('t16')">
+          <div class="task-content">
+            <span class="task-who-badge">Max</span>
+            <span class="task-text">Accès visualisation licences → voir avec PH</span>
+          </div>
+        </div>
+
+        <div class="task-item" id="t17" onclick="toggleDone('t17')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation();toggleDone('t17')">
+          <div class="task-content">
+            <span class="task-who-badge">Roro</span>
+            <span class="task-text">Voir avec ASUL pour formation L2 (avec Baptiste)</span>
+          </div>
+        </div>
+
+        <div class="task-item" id="t18" onclick="toggleDone('t18')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation();toggleDone('t18')">
+          <div class="task-content">
+            <span class="task-who-badge">Seb</span>
+            <span class="task-text">Message aux L2 pour sonder intérêt formation L3</span>
+          </div>
+        </div>
+
+        <div class="task-item" id="t19" onclick="toggleDone('t19')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation();toggleDone('t19')">
+          <div class="task-content">
+            <span class="task-who-badge">Seb</span>
+            <span class="task-text">Demander ajout de PH au canal de la ligue</span>
+          </div>
+        </div>
+
+        <div class="task-item" id="t20" onclick="toggleDone('t20')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation();toggleDone('t20')">
+          <div class="task-content">
+            <span class="task-who-badge">PH</span><span class="task-who-badge">Seb</span>
+            <span class="task-text">Point chasubles</span>
+          </div>
+        </div>
+
+        <div class="task-item" id="t21" onclick="toggleDone('t21')">
+          <input type="checkbox" class="task-cb" onclick="event.stopPropagation();toggleDone('t21')">
+          <div class="task-content">
+            <span class="task-who-badge">Valentine</span>
+            <span class="task-text">Communication tournois après les entraînements</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-card">
+    <div class="footer-item">
+      <div class="footer-icon">🏉</div>
+      <div>
+        <div class="footer-label">Réunion GTT</div>
+        <div class="footer-value">06 octobre à 19h15</div>
+      </div>
+    </div>
+    <div class="footer-item">
+      <div class="footer-icon">📅</div>
+      <div>
+        <div class="footer-label">Prochain CA</div>
+        <div class="footer-value">20 octobre à 19h15</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+  function toggle(header) {
+    header.parentElement.classList.toggle('collapsed');
+  }
+
+  function toggleDone(id) {
+    const item = document.getElementById(id);
+    const cb = item.querySelector('.task-cb');
+    cb.checked = !cb.checked;
+    item.classList.toggle('done', cb.checked);
+    save();
+  }
+
+  function save() {
+    const state = {};
+    document.querySelectorAll('.task-item[id]').forEach(item => {
+      state[item.id] = item.querySelector('.task-cb').checked;
+    });
+    try { localStorage.setItem('canut_cr_2026_09', JSON.stringify(state)); } catch(e) {}
+  }
+
+  function load() {
+    let state;
+    try { state = JSON.parse(localStorage.getItem('canut_cr_2026_09') || '{}'); } catch(e) { return; }
+    Object.entries(state).forEach(([id, done]) => {
+      const item = document.getElementById(id);
+      if (!item || !done) return;
+      item.querySelector('.task-cb').checked = true;
+      item.classList.add('done');
+    });
+  }
+
+  load();
+</script>
+</body>
+</html>
